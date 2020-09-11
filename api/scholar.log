@@ -1,0 +1,179 @@
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:34:13] "[33mGET /qadf HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:34:26] "[33mGET /qadf HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:34:46] "[33mGET /qhello HTTP/1.1[0m" 404 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=hello&as_vis=0&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=10&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=20&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=30&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=40&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=50&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=60&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=70&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=80&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=90&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=100&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=110&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=120&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=130&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=hello&as_vis=0&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=140&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=150&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=10&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=160&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=20&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=170&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=30&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=180&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=40&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=190&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=50&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=200&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=60&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=210&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=70&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=80&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=220&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=230&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=90&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=100&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=240&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=110&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=250&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=120&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=260&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=130&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=270&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=140&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=280&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=150&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=290&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=160&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=300&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=170&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=310&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=180&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=320&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=190&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=330&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=200&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=340&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=210&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=350&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=220&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=360&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=230&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=240&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=370&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=250&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=380&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=260&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=390&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=270&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=400&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=280&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=410&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=290&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=420&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=300&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=430&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=310&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=440&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=320&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=450&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=330&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=460&q=hello&hl=en&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?start=340&q=hello&hl=en&as_sdt=0,33
+INFO:werkzeug: * Detected change in '/home/keer4n/repos/ref-vision/api/api.py', reloading
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=hello&as_vis=0&as_sdt=0,33
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=hello&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:36:34] "[37mGET /q/hello HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:36:35] "[37mGET /q/hello HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=hello&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:36:42] "[37mGET /q/hello HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=bitcoin&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:37:01] "[37mGET /q/bitcoin HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=ram&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:37:27] "[37mGET /q/ram HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=ra&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:39:23] "[37mGET /q/ra HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=bitcoin&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:40:42] "[37mGET /q/bitcoin HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=bitcoin&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:42:01] "[37mGET /q/bitcoin HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=bitcoin&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 18:42:54] "[37mGET /q/bitcoin HTTP/1.1[0m" 200 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=Gaby%20Dagher&as_vis=0&as_sdt=0,33
+INFO:werkzeug:127.0.0.1 - - [01/Sep/2020 19:43:21] "[37mGET /q/Gaby%20Dagher HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/home/keer4n/repos/ref-vision/api/api.py', reloading
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:12] "[35m[1mGET / HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:13] "[37mGET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:13] "[37mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:13] "[37mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:13] "[37mGET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:13] "[37mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:13] "[37mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:21:52] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/home/keer4n/repos/ref-vision/api/api.py', reloading
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:22:01] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/home/keer4n/repos/ref-vision/api/api.py', reloading
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:23:16] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:23:17] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:23:19] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:23:20] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:23:39] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:28:06] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:28:06] "[37mGET /force/force.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:28:06] "[37mGET /force/force.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:28:06] "[37mGET /force/force.json HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 00:30:34] "[36mGET / HTTP/1.1[0m" 304 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=anonymous%20payment%20channels&as_vis=0&as_sdt=0,33
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 09:04:56] "[35m[1mGET /q/anonymous%20payment%20channels HTTP/1.1[0m" 500 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=anonymous%20payment%20channels&as_vis=0&as_sdt=0,33
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 09:05:39] "[35m[1mGET /q/anonymous%20payment%20channels HTTP/1.1[0m" 500 -
+INFO:scholarly:Getting https://scholar.google.com/scholar?hl=en&q=anonymous%20payment%20channels&as_vis=0&as_sdt=0,33
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:scholarly:Got a captcha request.
+INFO:scholarly:Exception WebDriverException while fetching page: ("'geckodriver' executable needs to be in PATH. ",)
+INFO:scholarly:Retrying with a new session.
+INFO:werkzeug:127.0.0.1 - - [02/Sep/2020 09:50:00] "[35m[1mGET /q/anonymous%20payment%20channels HTTP/1.1[0m" 500 -
