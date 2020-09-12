@@ -1,21 +1,22 @@
-from paper import Paper, Reference
+from .paper import Paper, Reference
+import warnings
 
-class ParseError(Exception):
-    def __init__(self, message):
-        self.message = message
-    
-    def __repr__(self):
-        return "PARSE_ERROR: "+ self.message
+class ParseWarning(Warning):
+    pass
 
 # To view if a field is requried (i.e. will be always present) or not consult:
 # https://github.com/Crossref/rest-api-doc/blob/master/api_format.md#contributor
 class CrossRefRestParser:
+    """ response parser for crossref
+    parses response to produce Papers and References.
+
+    """
     def __init__(self):
         pass
     
     def parse_response(self, api_return):
         mapping_dict = {
-            'work': self.parse_work
+            'work': self.parse_work,
             'work-list': self.parse_work_list
         }
 
@@ -33,7 +34,7 @@ class CrossRefRestParser:
         references_count = work['references-count']
         parsed_paper = Paper(title,url,doi,citation_count,references_count)
         try:
-            author = work['author'] # TODO: handle missing case
+            author = work.get('author', None) # TODO: handle missing case
             parsed_paper.author = author
         except KeyError:
             print("WARNING: author field is not present")
@@ -55,28 +56,28 @@ class CrossRefRestParser:
     def parse_work_list(self, work_list):
         parsed_papers = []
         for item in work_list:
-            parsed_papers.add(self.parse_work(item))
+            parsed_papers.append(self.parse_work(item))
         return parsed_papers
 
 
-    # TODO: right now assumes either "unstructured" or "article-title" is present
-    # fix that
-    def parse_reference(self, references):
+    # TODO: right now assumes either "unstructured" or "article-title" is present, fix thattat
+    @staticmethod
+    def parse_reference(references):
         parsed_references = []
         for ref in references:
             key = ref["key"]
             parsed_reference = Reference(key)
+            try:
+                unstructured = ref["unstructured"]
+                parsed_reference.title(unstructured)
+            except KeyError:
+                print("WARNING: not all fields present")
+                pass
             try: 
                 article_title = ref["article-title"]
-                parsed_reference.title = article_title
+                parsed_reference.title(article_title)
             except KeyError:
                 print("WARNING: not all fields present")
                 pass
             parsed_references.append(parsed_reference)
-            try:
-                unstructured = ref["unstructured"]
-                parsed_reference.title = unstructured
-            except KeyError:
-                print("WARNING: not all fields present")
-                pass
         return parsed_references

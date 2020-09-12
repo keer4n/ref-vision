@@ -1,0 +1,26 @@
+1. Define API endpoints
+        - Already Defined
+        - APIERROR as e => e.status_code, e.err_json
+2. Define services
+        - Generic Response Parser
+            QueryParser(baserURL, parsing_methods) - AbastractBaseClass
+                parse_doi abstractMethod
+                parse_query abstractMethod
+                throw_error(self, err_json):
+                    throw APIERROR(status_code, message):
+            
+                def fetch()
+                    
+
+
+            
+            CrossRefQueryParser(baserURL, parsing_methods)
+                self.fetch
+                parse_doi
+                parse_query
+            
+            ScholarlyQueryParse(Quer)
+            
+
+3. Define low level api fetch sevices
+    fetchClient => baserURL get
