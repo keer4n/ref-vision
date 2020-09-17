@@ -1,5 +1,6 @@
 import requests
-#from crossrefparser import CrossRefRestParser
+from core.crossrefparser import CrossRefRestParser
+from core.grapher import Grapher
 import warnings 
 
 class APIWarning(Warning):
@@ -73,6 +74,8 @@ class QueryService:
         return self._fetch(params=params)
 
 
-ret = QueryService().fetch_by_query("10.1145/3133956.3134093")
-#pout = CrossRefRestParser().parse_search_works_by_query_resp(ret)
-print(ret)
+# ret = QueryService().fetch_by_doi("10.1145/3133956.3134093")
+# paper = CrossRefRestParser().parse_response(ret)
+# g = Grapher(paper)
+# g.create()
+# print(g.graph())

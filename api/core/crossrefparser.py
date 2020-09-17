@@ -1,5 +1,12 @@
-from .paper import Paper, Reference
+from core.paper import Paper, Reference, Affiliation, Author
 import warnings
+import logging
+
+logger = logging.getLogger('crossrefparser')
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+logger.addHandler(ch)
 
 class ParseWarning(Warning):
     pass
@@ -11,51 +18,36 @@ class CrossRefRestParser:
     parses response to produce Papers and References.
 
     """
-    def __init__(self):
-        pass
     
     def parse_response(self, api_return):
         mapping_dict = {
             'work': self.parse_work,
             'work-list': self.parse_work_list
         }
-
-        mapping_dict[api_return['message-type']](api_return['message'])
-        # if api_return["message-type"] == "work":
-        #     self.parse_work(api_return["message"])
-        # if api_return["message-type"] == "work-list":
-        #     self.parse_work_list(api_return["message"])
+        return mapping_dict[api_return['message-type']](api_return['message'])
 
     def parse_work(self, work):
-        title = work['title']
-        url = work['URL']
-        doi = work['DOI']
-        citation_count = work['is-referenced-by-count']
-        references_count = work['references-count']
-        parsed_paper = Paper(title,url,doi,citation_count,references_count)
-        try:
-            author = work.get('author', None) # TODO: handle missing case
-            parsed_paper.author = author
-        except KeyError:
-            print("WARNING: author field is not present")
-            pass
-        try:
-            subtitle = work['subtitle'] # may miss
-            parsed_paper.subtitle = subtitle
-        except KeyError:
-            print("WARNING: subtitle field is not present")
-            pass
-        try:
-            reference = work['reference'] # may miss
-            parsed_paper.references = self.parse_reference(reference)
-        except KeyError:
-            print("WARNING: reference field is not present")
-            pass
+        logger.debug("Parsing work")
+        title = work.get('title')
+        url = work.get('URL')
+        doi = work.get('DOI')
+        citation_count = work.get('is-referenced-by-count')
+        references_count = work.get('references-count')
+
+        author = work.get('author', None)
+        if author is not None: author = CrossRefRestParser.parse_author(author)
+
+        subtitle = work.get('subtitle', None)
+        
+        reference = work.get('reference',None)
+        if reference is not None: reference = CrossRefRestParser.parse_reference(reference) 
+        
+        parsed_paper = Paper(title, url, doi, citation_count, references_count, author, subtitle, reference)
         return parsed_paper
     
     def parse_work_list(self, work_list):
         parsed_papers = []
-        for item in work_list:
+        for item in work_list["items"]:
             parsed_papers.append(self.parse_work(item))
         return parsed_papers
 
@@ -65,19 +57,49 @@ class CrossRefRestParser:
     def parse_reference(references):
         parsed_references = []
         for ref in references:
-            key = ref["key"]
-            parsed_reference = Reference(key)
-            try:
-                unstructured = ref["unstructured"]
-                parsed_reference.title(unstructured)
-            except KeyError:
-                print("WARNING: not all fields present")
-                pass
-            try: 
-                article_title = ref["article-title"]
-                parsed_reference.title(article_title)
-            except KeyError:
-                print("WARNING: not all fields present")
-                pass
+            key = ref.get('key')
+            title = ref.get('unstructured', None)
+            doi = ref.get('DOI', None)
+
+            #give priority to 'article-title'
+            if title is None: title = ref.get('article-title', None) 
+            if title is None: title = ref.get('series-title', None) 
+            if title is None: title = ref.get('volume-title',None) 
+            if title is None: title = ref.get('journal-title', None)
+
+            parsed_reference = Reference(key,title,doi)
             parsed_references.append(parsed_reference)
         return parsed_references
+
+    @staticmethod
+    def parse_author(authors):
+        """
+        Returns
+        -------
+        list
+            list of `Author` for the paper
+        """
+        parsed_author = []
+        for auth in authors:
+            given = auth.get('given', None)
+            family = auth.get('family')
+            affiliation = auth.get('affiliation', None)
+            if affiliation is not None: affiliation = CrossRefRestParser.parse_affiliation(affiliation)
+            author = Author(family,given,affiliation)
+            parsed_author.append(author)
+        return parsed_author
+        
+    @staticmethod
+    def parse_affiliation(affiliations):
+        """
+        Returns
+        -------
+        list 
+            list of `Affiliation` for the author
+        """
+        parsed_affiliation = []
+        for aff in affiliations:
+            name = aff.get('name')
+            affiliation = Affiliation(name)
+            parsed_affiliation.append(affiliation)
+        return parsed_affiliation

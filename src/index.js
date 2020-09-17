@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -6,106 +6,128 @@ import * as serviceWorker from './serviceWorker';
 import {ThemeProvider, Arwes, createTheme, Content, Button} from 'arwes';
 import Heading from 'arwes/lib/Heading';
 
-const ResultItem = ({title, author}) => {
-  return (<li>
+const ResultItem = ({title, author, doi}) => {
+
+  return (<li>         
             {title}<br/>
-            {author}
+            {author}  
         </li>
         )
 }
 
-async function fetchResults() {
-    const result = await (await fetch("/q/"+this.state.query)).json();
-    console.log(result)
-    return result;
-}
+
 
 
 class Result extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      gotGraph: false
+    }
+    this.drawGraph = this.drawGraph.bind(this);
   }
 
-
-
+  
+   drawGraph = async(x) => {
+     alert(x);
+    let res =  await fetch("/api/g?query="+x)
+                .then(resp => resp.json());
+    console.log(res);
+    this.setState({
+      gotGraph: true
+    })
+    }
+    
+  
   render() {    
       return (
         <Content style={{padding: 100, textAlign: "left"}}>
-          <Heading node = "h2">Results</Heading>
-          <ul>
-            {this.props.results.map(
-              r => <ResultItem title={r.title} author={r.author}/>
+        {this.state.gotGraph ? <Graph json={this.props.graphJson}/> :
+          <ol>
+               {this.props.results.map(
+              r => <ResultItem onClick={(e) => {e.preventDefault(); this.drawGraph(r.doi)}}  key={r.doi} title={r.title} author={r.author} doi={r.doi}/>
               )}
-              </ul>
-          
-        </Content>
+            
+          </ol>
+               }
+          </Content>
     )
     
   }
+}
+
+class Graph extends React.Component {
+  render(){
+    return (
+      <h1>Graph</h1>
+    )
+  }
+}
+
+function SearchBar() {
+  const [query, setQuery] = useState("");
+  
+    return (
+    <div>
+    <input 
+      type="text" 
+      onChange={(e) => {setQuery(e.target.value)}}
+     />
+     <br/><br/>
+     <Search query={query}/>
+     </div>
+    )
+  
 }
 
 class Search extends React.Component {
 
   constructor(props){
     super(props);
-    console.log(props);
-    this.getResults = props.getResults.bind(this);
     this.state = {
-      query : "",
       result: "",
       gotResults: false
     }
-
-    this.updateQuery = this.updateQuery.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
-  updateQuery(e){
+  fetchResults = async() => {
+    let res =  await fetch("/api/s/"+encodeURIComponent(this.props.query))
+                .then(resp => resp.json());
+    console.log(res);
     this.setState({
-      query: e.target.value
-    });
-    e.preventDefault();
+      result: res,
+      gotResults: true
+    })
   }
-
-
-  
-
 
   render(){
     return (
-      <ThemeProvider theme={createTheme()}>
-        <Arwes>
-          <div style={{textAlign: "center"}}>
-          <Heading node='h1'>REF-VISION</Heading>
-          <Content>
-         
-            <input type="text" onChangeCapture={this.updateQuery}>
-            </input>
-            <br></br>
+        <div>
             <Button type="submit" onClick={
               () => {
-                this.getResults().then(res => {
-                  this.setState({
-                    result: res,
-                    gotResults: true
-                  });
-                });
+                this.fetchResults()
               }
             }> Search</Button>
           
           {this.state.gotResults ? <Result results={this.state.result}/> : null}
-          </Content>
-          
           </div>
-        </Arwes>
-      </ThemeProvider>
+          
     )
   }
 }
 
 ReactDOM.render(
-  <div>
-  <Search getResults={fetchResults}/> 
-  </div>,
+  <ThemeProvider theme={createTheme()}>
+        <Arwes>
+          <div style={{textAlign: "center"}}>
+          <Heading node='h1'>REF-VISION</Heading>
+          <Content>
+            <SearchBar /> 
+          </Content>
+          </div>
+        </Arwes>
+      </ThemeProvider>,
   document.getElementById('root')
 );
 

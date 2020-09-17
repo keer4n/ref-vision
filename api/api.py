@@ -1,14 +1,18 @@
 import requests
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
-from core.finder import Finder
+from core.finder import QueryService
+from core.crossrefparser import CrossRefRestParser
+from core.grapher import Grapher
+from core.paper import GenericEncoder
 
-app =  Flask(__name__, static_folder="force")
+app =  Flask(__name__, static_folder="../build", static_url_path='/')
 
-finder = Finder()
+finder = QueryService()
+parser = CrossRefRestParser()
 
-@app.route("/s/<queryString>")
+@app.route("/api/s/<queryString>")
 def search(queryString):    #TODO: probably should sanitize ?
     """ generic query string search
     search for a query returning result list which can be further used
@@ -24,9 +28,13 @@ def search(queryString):    #TODO: probably should sanitize ?
     json
         response json
     """
-    pass
+    resp = finder.fetch_by_query(queryString)
+    print(resp)
+    papers = parser.parse_response(resp)
+    return json.dumps(papers, cls=GenericEncoder)
+    
 
-@app.route("/q/doi/<doi>")
+@app.route("/api/q/doi/<doi>")
 def query_doi(doi):
     """ specific request using doi
     the doi is queried directly
@@ -41,10 +49,29 @@ def query_doi(doi):
     json
         response json containing the work referenced by doi
     """
-    finder.fetch_by_doi(doi)
+    return finder.fetch_by_doi(doi)
 
 
 
 @app.route("/")
-def static_proxy():
-    return app.send_static_file("force.html")
+def index():
+    return app.send_static_file("index.html")
+
+@app.route("/api/g")
+def draw_graph():
+    
+    # ret = QueryService().fetch_by_doi("10.1145/3133956.3134093")
+    ret = QueryService().fetch_by_doi(request.args.get("doi"))
+    paper = CrossRefRestParser().parse_response(ret)
+    g = Grapher(paper)
+    g.create()
+    from networkx.readwrite import json_graph
+    
+    d = json_graph.node_link_data(g.graph)  # node-link format to serialize
+    return json.dumps(d,cls=GenericEncoder)
+    # write json
+    # return json.dump(d, open("force/force.json", "w"), cls=GenericEncoder)
+    # return app.send_static_file("force.html")
+
+if __name__ == "__main__":
+    app.run()

@@ -2,21 +2,30 @@ import json
 import networkx as nx
 from networkx.readwrite import json_graph
 
-
-G = nx.barbell_graph(6, 3)
-# this d3 example uses the name attribute for the mouse-hover value,
-# so add a name to each node
-for n in G:
-    G.nodes[n]["name"] = n
-# write json formatted data
-d = json_graph.node_link_data(G)  # node-link format to serialize
-# write json
-json.dump(d, open("force/force.json", "w"))
-
 class Grapher:
 
-    def __init__(self):
-        pass
+    DEPTH = 1
+    def __init__(self, paper):
+        """
+        Parameters
+        ----------
+        paper : Paper
+            a Paper as defined in paper.py
+        """
+        self._G = nx.DiGraph()
+        self._paper = paper
+    
+    def create(self, depth = DEPTH):
+        self._G.add_node(self._paper)
+        for ref in self._paper.references:
+                self._G.add_edge(self._paper, ref)
+        for n in self._G:
+            self._G.nodes[n]["name"] = n
+        return self._G
+
+    @property
+    def graph(self):
+        return self._G
 
     
 
