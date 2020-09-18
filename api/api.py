@@ -5,15 +5,17 @@ from flask import Flask, jsonify, request
 from core.finder import QueryService
 from core.crossrefparser import CrossRefRestParser
 from core.grapher import Grapher
-from core.paper import GenericEncoder
+from core.paper import GenericEncoder, GraphEncoder
 
-app =  Flask(__name__, static_folder="../build", static_url_path='/')
+# app =  Flask(__name__, static_folder="../build", static_url_path='/')
+
+app = Flask(__name__)
 
 finder = QueryService()
 parser = CrossRefRestParser()
 
-@app.route("/api/s/<queryString>")
-def search(queryString):    #TODO: probably should sanitize ?
+@app.route("/api/s")
+def search():    #TODO: probably should sanitize ?
     """ generic query string search
     search for a query returning result list which can be further used
     to select specific papers with doi to create graph
@@ -28,7 +30,7 @@ def search(queryString):    #TODO: probably should sanitize ?
     json
         response json
     """
-    resp = finder.fetch_by_query(queryString)
+    resp = finder.fetch_by_query(request.args.get("query"))
     print(resp)
     papers = parser.parse_response(resp)
     return json.dumps(papers, cls=GenericEncoder)
@@ -53,9 +55,9 @@ def query_doi(doi):
 
 
 
-@app.route("/")
-def index():
-    return app.send_static_file("index.html")
+# @app.route("/")
+# def index():
+#     return app.send_static_file("index.html")
 
 @app.route("/api/g")
 def draw_graph():
@@ -68,10 +70,10 @@ def draw_graph():
     from networkx.readwrite import json_graph
     
     d = json_graph.node_link_data(g.graph)  # node-link format to serialize
-    return json.dumps(d,cls=GenericEncoder)
+    return json.dumps(d,cls=GraphEncoder,indent=4)
     # write json
     # return json.dump(d, open("force/force.json", "w"), cls=GenericEncoder)
     # return app.send_static_file("force.html")
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()

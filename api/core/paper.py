@@ -14,6 +14,13 @@ class GenericEncoder(JSONEncoder):
         if isinstance(o, Reference):
             return {"key": o.key, "title": o.title, "doi": o.doi}
 
+class GraphEncoder(JSONEncoder):
+    def default(self, o):
+        if isinstance(o, Paper):
+            return o.doi
+        if isinstance(o, Reference):
+            return o.key
+
 class Paper:
     """This class represents the basic papers.
     """    
@@ -62,6 +69,10 @@ class Paper:
     @property
     def author(self):
         return self._author
+    
+    @property
+    def title(self):
+        return ", ".join(self._title)
 
     def __str__(self):
         if self._subtitle is not None:
@@ -71,6 +82,9 @@ class Paper:
     
     def __repr__(self):
         return f'Title: {self._title}\nSub-Title: {self._subtitle}'
+
+    # def __eq__(self, other):
+    #     return self.doi == other.doi
 
 class Reference:
     """This class represents a reference.
@@ -90,7 +104,7 @@ class Reference:
     
     @property
     def title(self):
-        return self.title
+        return self._title
 
     @property
     def doi(self):
@@ -108,6 +122,9 @@ class Reference:
 
     def __repr__(self):
         return f'{self._title}'
+
+    # def __eq__(self, other):
+    #     return self.doi == other.doi
 
 class Author:
     """This class represents the author of a paper.

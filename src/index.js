@@ -1,20 +1,30 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {ThemeProvider, Arwes, createTheme, Content, Button} from 'arwes';
+import {ThemeProvider, Arwes, createTheme, Content, Frame} from 'arwes';
 import Heading from 'arwes/lib/Heading';
+import Graph from './Graph'
 
-const ResultItem = ({title, author, doi}) => {
+class ResultItem extends React.Component {
 
-  return (<li>         
-            {title}<br/>
-            {author}  
-        </li>
-        )
+  constructor(props){
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  
+  handleClick(e){
+    e.preventDefault()
+    this.props.onClicked(this.props.doi)
+  }
+
+  render(){
+    return (<li onClick={this.handleClick}>
+            {this.props.title}<br/>
+            {this.props.author}
+            </li>)
+  }
 }
-
 
 
 
@@ -22,98 +32,130 @@ class Result extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      gotGraph: false
+      resultJson : null
     }
-    this.drawGraph = this.drawGraph.bind(this);
   }
-
-  
-   drawGraph = async(x) => {
-     alert(x);
-    let res =  await fetch("/api/g?query="+x)
-                .then(resp => resp.json());
-    console.log(res);
-    this.setState({
-      gotGraph: true
-    })
-    }
     
+    
+
+    componentDidUpdate(prevProps){
+      if(this.props.query !== prevProps.query){
+      fetch("/api/s?query="+this.props.query)
+                  .then(resp => resp.json())
+                  .then(data => this.setState({
+                    resultJson: data,
+                  }));
+    
+      }
+    }
+
   
   render() {    
-      return (
-        <Content style={{padding: 100, textAlign: "left"}}>
-        {this.state.gotGraph ? <Graph json={this.props.graphJson}/> :
-          <ol>
-               {this.props.results.map(
-              r => <ResultItem onClick={(e) => {e.preventDefault(); this.drawGraph(r.doi)}}  key={r.doi} title={r.title} author={r.author} doi={r.doi}/>
-              )}
-            
-          </ol>
-               }
-          </Content>
-    )
+      
+      if (this.props.searchMode && !this.props.graphMode){
+        if(this.state.resultJson == null){
+          return null
+        } else {
+         return (<Content style={{padding: 100, textAlign: "left"}}>
+           <ol>
+                {this.state.resultJson.map(
+               r => <ResultItem onClicked={this.props.onResultItemClick}  key={r.doi} title={r.title} author={r.author} doi={r.doi}/>
+                )}
+             
+           </ol>
+                
+           </Content>)
+        }
+      }
+      else if(this.props.graphMode){
+        return (<Content style={{padding: 10, textAlign: "left"}}>
+                  <Graph doi={this.props.doi}></Graph>
+                </Content>
+              )
+      }    
+    
     
   }
 }
 
-class Graph extends React.Component {
+
+
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query : ""
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  
+  handleSubmit(e) {
+    this.props.onQueryInput(this.state.query);
+    e.preventDefault();
+  }
+  
+
   render(){
     return (
-      <h1>Graph</h1>
-    )
-  }
+          <form onSubmit={this.handleSubmit}>
+            <input 
+              type="text"
+              value={this.state.query}
+              onChange={(e) => {this.setState({
+                query : e.target.value
+              })} }/>
+          </form>
+          )
+      }
 }
 
-function SearchBar() {
-  const [query, setQuery] = useState("");
-  
-    return (
-    <div>
-    <input 
-      type="text" 
-      onChange={(e) => {setQuery(e.target.value)}}
-     />
-     <br/><br/>
-     <Search query={query}/>
-     </div>
-    )
-  
-}
-
-class Search extends React.Component {
-
+class Main extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      result: "",
-      gotResults: false
-    }
-    this.fetchResults = this.fetchResults.bind(this);
+      query:"",
+      gotQuery:false,
+      searchMode: true,
+      graphMode: false,
+      gotResults: false,
+      gotGraphJson: false,
+      resultJson: null,
+      graphJson: null
+    };
+    this.handleSearchBarSubmit = this.handleSearchBarSubmit.bind(this);
+    this.handleResultItemClick = this.handleResultItemClick.bind(this);
+    // this.fetchResults = this.fetchResults.bind(this);
   }
 
-  fetchResults = async() => {
-    let res =  await fetch("/api/s/"+encodeURIComponent(this.props.query))
-                .then(resp => resp.json());
-    console.log(res);
+  
+
+  handleSearchBarSubmit(searchQuery) {
     this.setState({
-      result: res,
-      gotResults: true
+      query : searchQuery,
+      graphMode: false
+    });
+  }
+
+  handleResultItemClick(key) {
+    this.setState({
+      doi : key,
+      graphMode: true
     })
   }
 
-  render(){
+  render() {
     return (
-        <div>
-            <Button type="submit" onClick={
-              () => {
-                this.fetchResults()
-              }
-            }> Search</Button>
-          
-          {this.state.gotResults ? <Result results={this.state.result}/> : null}
-          </div>
-          
-    )
+      <div>
+          <SearchBar 
+            onQueryInput={this.handleSearchBarSubmit}/>
+            <Frame style={{margin:"20px"}}>
+              <Result 
+                query={this.state.query}
+                doi={this.state.doi}
+                searchMode={this.state.searchMode} 
+                graphMode={this.state.graphMode}
+                onResultItemClick={this.handleResultItemClick}/>
+            </Frame></div>)
   }
 }
 
@@ -122,9 +164,7 @@ ReactDOM.render(
         <Arwes>
           <div style={{textAlign: "center"}}>
           <Heading node='h1'>REF-VISION</Heading>
-          <Content>
-            <SearchBar /> 
-          </Content>
+          <Main />
           </div>
         </Arwes>
       </ThemeProvider>,

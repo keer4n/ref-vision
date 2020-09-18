@@ -2,6 +2,8 @@ import json
 import networkx as nx
 from networkx.readwrite import json_graph
 
+
+
 class Grapher:
 
     DEPTH = 1
@@ -16,11 +18,15 @@ class Grapher:
         self._paper = paper
     
     def create(self, depth = DEPTH):
-        self._G.add_node(self._paper)
+        self._G.add_node(self._paper, label="R")
         for ref in self._paper.references:
                 self._G.add_edge(self._paper, ref)
+        i=1
         for n in self._G:
-            self._G.nodes[n]["name"] = n
+            self._G.nodes[n]["name"] = n.title
+            if self._G.nodes[n].get("label", None) == None:
+                self._G.nodes[n]["label"] = "L"+str(depth)+"R"+str(i)
+                i+=1
         return self._G
 
     @property

@@ -1,0 +1,46 @@
+.nodes circle {
+    cursor: pointer;
+    fill: #ff3399;
+    stroke: #000;
+    stroke-width: .5px;
+}
+
+.links line {
+    fill: none;
+    stroke: #9ecae1;
+    stroke-width: .5px;
+}
+
+.d3-tip {
+    line-height: 1;
+    padding: 6px; 
+    background: rgba(231, 236, 238, 0.8);
+    color: rgb(156, 23, 23);
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  /* Creates a small triangle extender for the tooltip */
+  .d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(240, 233, 233, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+  }
+
+  /* Style northward tooltips specifically */
+  .d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+  }
+
+  avg {
+      height: 100%;
+      width: 100%
+  }

@@ -70,7 +70,8 @@ class QueryService:
         rows : int
             no. of rows to fetch
         """
-        params = {"query": query, "rows":rows}
+        params = {"query": query, "rows":rows, "filter":"has-references:true"}
+        #params = {"query": query, "rows":rows}
         return self._fetch(params=params)
 
 
