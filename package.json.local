@@ -2,7 +2,6 @@
   "name": "ref-vision",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://keer4n.github.io/ref-vision",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -38,5 +37,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
