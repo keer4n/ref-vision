@@ -117,7 +117,7 @@ class Graph extends React.Component {
     componentDidMount(prevProps){
       
         
-        fetch("https://ref-vision-api.herokuapp.com/api/g?doi="+(this.props.doi))
+        fetch("https://cors-anywhere.herokuapp.com/https://ref-vision-api.herokuapp.com/api/g?doi="+(this.props.doi))
                         .then(resp => {if (resp.status !== 200) {
                                             this.setState({
                                                 respOk: false

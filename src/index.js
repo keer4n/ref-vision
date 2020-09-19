@@ -40,7 +40,7 @@ class Result extends React.Component {
 
     componentDidUpdate(prevProps){
       if(this.props.query !== prevProps.query){
-      fetch("https://ref-vision-api.herokuapp.com/api/s?query="+this.props.query)
+      fetch("https://cors-anywhere.herokuapp.com/https://ref-vision-api.herokuapp.com/api/s?query="+this.props.query)
                   .then(resp => resp.json())
                   .then(data => this.setState({
                     resultJson: data,
